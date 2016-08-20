@@ -10,3 +10,8 @@
 * Librerías externas
 * Numpy y Scipy
 * Generación de Gráficos y Estadísticas
+
+## Enlaces de interés
+
+* __Try Python - Code School__ (https://www.codeschool.com/courses/try-python) - Curso de python gratuito donde puedes practicar y aprender.
+* __Sitio oficial de Python__ (https://www.python.org/) - Sitios oficial donde puedes descargar python y usar la terminal interactiva desde el navegador.
