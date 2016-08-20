@@ -9,5 +9,3 @@
 * Librerías externas
 * Numpy y Scipy
 * Generación de Gráficos y Estadísticas
-
-## Sesión 1
