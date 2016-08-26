@@ -57,6 +57,7 @@ print "Adios"
 ~~~
 
 > El código anterior imprime el mensaje `El numero es menor estricto que 100` sólo cuando el valor de la variable `a` no es mayor o igual que `100`, intente cambiar el valor a `120` y analice los resultados.
+
 Opcionalmente se puede ejecutar un bloque cuando no se cumple la condición, esto se hace mediante la sentencia `else` que sigifica `sino, entonces ...`, ejemplo
 
 ~~~py
@@ -68,7 +69,9 @@ else:
 print "Adios"
 ~~~
 
-> Si el número ingresado por el usuario es mayor o igual a `18` entonces se mostrará el mensaje `Ya eres mayor de edad, puedes votar :)`, sino se mostrará el mensaje `Eres menor de edad, no entras al bar :'(`. Observe que el mensaje `Adios` siempre se muestra ya pertenece al bloque principal de ejecución. Opcionalmente además del bloque `else` se pueden anidar indeterminadamente subcondiciones `elif` las cuales se evaluarán sólo si la anterior no se cumple, ejemplo
+> Si el número ingresado por el usuario es mayor o igual a `18` entonces se mostrará el mensaje `Ya eres mayor de edad, puedes votar :)`, sino se mostrará el mensaje `Eres menor de edad, no entras al bar :'(`. Observe que el mensaje `Adios` siempre se muestra ya pertenece al bloque principal de ejecución.
+
+Opcionalmente además del bloque `else` se pueden anidar indeterminadamente subcondiciones `elif` las cuales se evaluarán sólo si la anterior no se cumple, ejemplo
 
 ~~~py
 edad = int(raw_input("Ingresa tu edad:"))
@@ -98,7 +101,11 @@ for x in [1, 3, 5, 7, 9]:
 print "La suma de 1, 3, 5, 7, 9 es:", s
 ~~~
 
-> Observe que la sentencia `print` está fuera del bloque, por lo que se ejecutará hasta que se rompa el ciclo (hasta que se hayan iterado/recorrido todos los elementos del arreglo), en cada iteración, la variable `s` reemplazará su valor por el que ya tenía más el iterado `x`, a este proceso se le conoce como acumulación. Finalmente se imprimirá la lenyenda entre comillas y el valor de `s`, cuando en un `print` ponemos varios valores separados por comas, los imprimirá en la misma línea y cada valor lo convertirá a una cadena. Cada coma representará también un espacio en blanco, ejemplo `print "Hola", "mundo"` imprime `Hola mundo`, `print "Hola:", 5` imprime `Hola: 5`, si nosotros hacemos `print "Hola: " + 5` provocaremos un error ya que estamos intentando sumar una cadena y un número, lo correcto en tal caso sería convertir primero el número a una cadena `print "Hola: " + str(5)` sin embargo este proceso es más artificioso. La función range(a, b) genera un equivalente al arreglo desde el valor `a`, hasta el valor `b - 1`, ambos deben ser enteros, ejemplo `range(0, 3) # [0, 1, 2]`, `range(3, 6) # [3, 4, 5]`, `range(1, 10, 2) # [1, 3, 5, 7, 9]`, `range(1, 9, 2) # [1, 3, 5, 7]`, debemos tener cuidado con el finalizador, ejemplo `Sumar los primeros 100 números naturales`
+> Observe que la sentencia `print` está fuera del bloque, por lo que se ejecutará hasta que se rompa el ciclo (hasta que se hayan iterado/recorrido todos los elementos del arreglo), en cada iteración, la variable `s` reemplazará su valor por el que ya tenía más el iterado `x`, a este proceso se le conoce como acumulación. Finalmente se imprimirá la lenyenda entre comillas y el valor de `s`.
+
+Cuando en un `print` ponemos varios valores separados por comas, los imprimirá en la misma línea y cada valor lo convertirá a una cadena. Cada coma representará también un espacio en blanco, ejemplo `print "Hola", "mundo"` imprime `Hola mundo`, `print "Hola:", 5` imprime `Hola: 5`, si nosotros hacemos `print "Hola: " + 5` provocaremos un error ya que estamos intentando sumar una cadena y un número, lo correcto en tal caso sería convertir primero el número a una cadena `print "Hola: " + str(5)` sin embargo este proceso es más artificioso.
+
+La función `range(a, b)` genera un equivalente al arreglo desde el valor `a`, hasta el valor `b - 1`, ambos deben ser enteros, ejemplo `range(0, 3) # [0, 1, 2]`, `range(3, 6) # [3, 4, 5]`, `range(1, 10, 2) # [1, 3, 5, 7, 9]`, `range(1, 9, 2) # [1, 3, 5, 7]`, debemos tener cuidado con el finalizador, ejemplo `Sumar los primeros 100 números naturales`
 
 ~~~py
 s = 0
