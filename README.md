@@ -47,7 +47,7 @@
 > En el ejemplo anterior vemos que las líneas `1, 2, 3, 6, 7, 8, 12` pertenecen al bloque de instrucciones principal, las líneas `4, 5` pertenecen al bloque de `A` y las líneas `9, 10, 11` pertenecen al bloque de `B`.
 
 * __Control de flujo__: se podría pensar que _python_ lee línea a línea cada instrucción y la evalua, sin embargo, podemos cambiar la dirección del flujo mediante las estructuras de control de flujo que son principalmente las `condicionales` y los `ciclos`.
-* __Condicionales__: una condición es un valos booleano que puede ser verdadero `True` o falso `False`, una condicional evalua la condición y determina si ejecuta o no un bloque de instrucciones en base al resultado de la condición (si es verdadero), la condicional propuesta en _python_ es la sentencia `if` la cual evalua si la condición es verdadera y ejecuta su bloque anidado, ejemplo
+* __Condicional IF__: una condición es un valos booleano que puede ser verdadero `True` o falso `False`, una condicional evalua la condición y determina si ejecuta o no un bloque de instrucciones en base al resultado de la condición (si es verdadero), la condicional propuesta en _python_ es la sentencia `if` la cual evalua si la condición es verdadera y ejecuta su bloque anidado, ejemplo
 
 ~~~py
 a = 10
@@ -68,7 +68,44 @@ else:
 print "Adios"
 ~~~
 
-> Si el número ingresado por el usuario es mayor o igual a `18` entonces se mostrará el mensaje `Ya eres mayor de edad, puedes votar :)`, sino se mostrará el mensaje `Eres menor de edad, no entras al bar :'(`. Observe que el mensaje `Adios` siempre se muestra ya pertenece al bloque principal de ejecución.
+> Si el número ingresado por el usuario es mayor o igual a `18` entonces se mostrará el mensaje `Ya eres mayor de edad, puedes votar :)`, sino se mostrará el mensaje `Eres menor de edad, no entras al bar :'(`. Observe que el mensaje `Adios` siempre se muestra ya pertenece al bloque principal de ejecución. Opcionalmente además del bloque `else` se pueden anidar indeterminadamente subcondiciones `elif` las cuales se evaluarán sólo si la anterior no se cumple, ejemplo
+
+~~~py
+edad = int(raw_input("Ingresa tu edad:"))
+if edad < 4:
+  print "Eres un bebe -_-"
+elif edad < 12:
+  print "Eres un bambino XD"
+elif edad < 18:
+  print "Eres un adolescente :/"
+elif edad < 30:
+  print "Eres un joven :O"
+elif edad < 60:
+  print "Eres un adulto :)"
+else:
+  print "Seguiras siendo adulto ;)"
+print "Adios"
+~~~
+
+> También podemos crear condiciones complejas usando los operadores `and`, `or` y `not`, ejemplo `edad >= 18 and sexo == 'Mujer'`, `dia == "Lunes" or mes == 'marzo'`, `not dia in ["Lunes", "Jueves"]`, `a > 3 and (b < 6 or c >= 8)`. Observe que el operador `==` determina si dos elementos son iguales, no lo confunda con el operador de asignación `=`.
+
+* __Ciclo FOR-IN__: un ciclo nos permite repetir un conjunto de instrucciones, ya sea mediante una condición que se cumpla o iterando un arreglo. La sentencia `for-in` nos permite repetir un bloque utilizando una variable que almacena el valor iterado (el valor recorrido) en un arreglo, ejemplo `for x in [1, 2, 3]: print x` imprimirá la variable `x` para cada elemento en el arreglo, es decir, que _python_ tomará cada elemento del arreglo y lo irá guardando en la variable `x`, luego ejecutará el bloque anidado, ejemplo
+
+~~~py
+s = 0
+for x in [1, 3, 5, 7, 9]:
+  s = s + x
+print "La suma de 1, 3, 5, 7, 9 es:", s
+~~~
+
+> Observe que la sentencia `print` está fuera del bloque, por lo que se ejecutará hasta que se rompa el ciclo (hasta que se hayan iterado/recorrido todos los elementos del arreglo), en cada iteración, la variable `s` reemplazará su valor por el que ya tenía más el iterado `x`, a este proceso se le conoce como acumulación. Finalmente se imprimirá la lenyenda entre comillas y el valor de `s`, cuando en un `print` ponemos varios valores separados por comas, los imprimirá en la misma línea y cada valor lo convertirá a una cadena. Cada coma representará también un espacio en blanco, ejemplo `print "Hola", "mundo"` imprime `Hola mundo`, `print "Hola:", 5` imprime `Hola: 5`, si nosotros hacemos `print "Hola: " + 5` provocaremos un error ya que estamos intentando sumar una cadena y un número, lo correcto en tal caso sería convertir primero el número a una cadena `print "Hola: " + str(5)` sin embargo este proceso es más artificioso. La función range(a, b) genera un equivalente al arreglo desde el valor `a`, hasta el valor `b - 1`, ambos deben ser enteros, ejemplo `range(0, 3) # [0, 1, 2]`, `range(3, 6) # [3, 4, 5]`, `range(1, 10, 2) # [1, 3, 5, 7, 9]`, `range(1, 9, 2) # [1, 3, 5, 7]`, debemos tener cuidado con el finalizador, ejemplo `Sumar los primeros 100 números naturales`
+
+~~~py
+s = 0
+for x in range(1, 101):
+  s = s + 1
+print "La suma los primeros 100 numeros naturales (1, 2, 3, ...., 100) es", s
+~~~
 
 
 
