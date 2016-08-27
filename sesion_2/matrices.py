@@ -75,9 +75,6 @@ def mul_mat(A, B):
 
 print_mat(mul_mat(A, B))
 
-
-from matrices import *
-
 def det2(a, b, c, d):
     return a * d - b * c
 
