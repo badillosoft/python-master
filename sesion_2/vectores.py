@@ -54,11 +54,12 @@ def unit_vec(u):
 def proj_vec(a, b):
     return mul_vec(norm_vec(a), unit_vec(b))
 
-print add_vec((1, 2, 3), (4, 5, 6))
-print sub_vec((1, 2, 3), (4, 5, 6))
-print mul_vec(2, (4, 5, 6))
-print dot_vec((1, 2, 3), (4, 5, 6))
-print times_vec((1, 2, 3), (4, 5, 6))
-print norm_vec((1, 2, 3))
-print unit_vec((1, 2, 3))
-print proj_vec((1, 2, 3), (4, 5, 6))
+if __name__ == "__main__":
+    print add_vec((1, 2, 3), (4, 5, 6))
+    print sub_vec((1, 2, 3), (4, 5, 6))
+    print mul_vec(2, (4, 5, 6))
+    print dot_vec((1, 2, 3), (4, 5, 6))
+    print times_vec((1, 2, 3), (4, 5, 6))
+    print norm_vec((1, 2, 3))
+    print unit_vec((1, 2, 3))
+    print proj_vec((1, 2, 3), (4, 5, 6))
