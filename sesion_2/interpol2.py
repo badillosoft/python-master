@@ -16,14 +16,14 @@ def det3(mat):
     a21 = mat[2][1]
     a22 = mat[2][2]
 
-    return a00 * det2(a11, a12, a21, a22)
-        - a01 * det2(a10, a12, a20, a22)
+    return a00 * det2(a11, a12, a21, a22) \
+        - a01 * det2(a10, a12, a20, a22) \
         + a02 * det2(a10, a11, a20, a21)
 
 def min(A, i, j):
     n, m = len(A), len(A[0])
     mat = []
-    
+
     for a in range(0, n):
         if a == i:
             continue
@@ -44,4 +44,34 @@ def adj(A):
     B = new_mat(n, m)
     for i in range(0, n):
         for j in range(0, m):
-            B[i][j] = A[]
+            aux = min(A, i, j)
+            B[i][j] = ((-1) ** (i + j)) * det2(aux[0][0], aux[0][1], aux[1][0], aux[1][1])
+    return B
+
+def inv(A):
+    B = trans_mat(adj(A))
+
+    d = det3(A)
+
+    n, m = len(B), len(B[0])
+
+    for i in range(0, n):
+        for j in range(0, m):
+            B[i][j] = B[i][j] / float(d)
+
+    return B
+
+print_mat([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print_mat(min([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1, 1))
+
+A = [
+    [1, 2, 3],
+    [2, 4, 5],
+    [1, 6, 2]
+]
+
+B = inv(A)
+
+print_mat(A)
+print_mat(B)
+print_mat(mul_mat(A, B))
