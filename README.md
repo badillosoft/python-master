@@ -21,6 +21,7 @@
 
 * Se concluyó la [Sesión 1](https://github.com/badillosoft/python-master/tree/master/sesion_1) dónde se revisaron los componentes básicos de python.
 * Se añadió el libro [Python para todos](https://github.com/badillosoft/python-master/blob/master/recursos/python_para_todos.pdf) en la sescción de recursos.
+* Se concluyó la [Sesión 2](https://github.com/badillosoft/python-master/tree/master/sesion_2) dónde se revisaron las listas, tuplas, arreglos, vectores y matrices.
 
 ## Tareas
 
