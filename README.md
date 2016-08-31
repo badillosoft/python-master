@@ -26,6 +26,7 @@
 
 1. Crear un programa que defina la función llamada `stats(arr)` la cual recibe el arreglo (o tupla) `arr` y devuelve una tupla `(min, max, sum, prom, sum2, desv)` con el valor mínimo, máximo, la suma de los valores, el promedio de estos, la suma de cuadrados y la desviación estándar `desv² = ∑(xi - ẋ)` donde `ẋ` es el promedio. Puede basarse en el programa [min_max.py](https://github.com/badillosoft/python-master/blob/master/sesion_2/min_max.py) de la sesión 2
 2. Crear un programa que solicite el número de puntos a ingresar, luego para cada punto guardar en un arreglo la tupla `(x, y)` donde `x` es el i-ésimo punto en su coordenada `x` y `y` en su coordenada `y` (también deben ingresarse), intente utilizar `line = raw_input("Ingresa X y Y separados por ',', ejemplo '1, 2': ")` luego `aux = line.split(",")`, finalmente `x = float(aux[0])` y `y = aux[1]`, sino solicite cada valor por separado `x = float(raw_input("ingresa X: "))`. Cada punto se guardará en el arreglo llamado `points` inicialmente vacío `points = []`. Una vez que tenga los puntos complete el siguiente programa:
+
 > __python__ - fast_interpol.py
 
 ~~~py
@@ -50,20 +51,21 @@ def interpol(P, x):
     return lin(x0, y0, x1, y1, x)
 
 def x_bounds(points):
-  min = points[0][0]
-  max = points[0][0]
+  x_min = points[0][0]
+  x_max = points[0][0]
   for x, y in points:
-    if min < x:
-      min = x
-    elif max > x:
-      max = x
-  return (int(min) - 1, int(max) + 1)
+    if x_min > x:
+      x_min = x
+    elif x_max < x:
+      x_max = x
+  return (int(x_min) - 1, int(x_max) + 1)
   
 x_min, x_max = x_bounds(points)
 
-for x in range(x_min, x_max):
-    print x, interpol(points, x)
+print "# Points: %i | Range (%i, %i)" %(len(points), x_min, x_max)
 
+for x in range(x_min, x_max):
+    print "%.2f %.2f" %(x, interpol(points, x))
 ~~~
 
 ## Sesión 1
