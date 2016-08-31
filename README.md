@@ -32,7 +32,7 @@
 ~~~py
 points = []
 
-# COMPLETAR LECTURA DE poits
+# COMPLETAR LECTURA DE points
 # N = int(raw_input("Ingresa el numero de puntos: "))
 # for i in range(0, N):
 #   # ... LEER x, y
