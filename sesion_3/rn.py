@@ -6,6 +6,7 @@ class Node:
         self.n = n
         self.w = []
         self.w0 = random()
+        self.r = 0.001
 
         for i in range(0, n):
             self.w.append(random())
@@ -16,6 +17,11 @@ class Node:
             s += self.w[i] * x[i]
 
         return 1.0 / (1.0 + exp(-s))
+
+    def fitness(self, delta):
+        self.w0 -= delta * self.r
+        for i in range(0, self.n):
+            self.w[i] += self.r * delta
 
 class Layer:
     def __init__(self, Ni, No):
@@ -35,10 +41,15 @@ class Layer:
 
         return y
 
+    def fitness(self, delta):
+        for node in self.nodes:
+            node.fitness(delta)
+
 class RN:
     def __init__(self, M, N, K, G):
         self.layers = [Layer(K, N)]
         self.M = M
+        self.N = N
 
         for i in range(0, M):
             self.layers.append(Layer(N, N))
@@ -55,7 +66,26 @@ class RN:
 
         return z
 
+    def fitness(self, x, zo):
+        z = self.eval(x)
+        
+        s = 0
+
+        for i in range(0, len(z)):
+            s += abs(zo[i] - z[i])
+
+        delta = float(s) / len(z)
+
+        for layer in self.layers:
+            layer.fitness(delta)
+
 rn = RN(1, 4, 2, 1)
+
+for i in range(0, 5000):
+    rn.fitness([0, 0], [0])
+    rn.fitness([0, 1], [1])
+    rn.fitness([1, 0], [1])
+    rn.fitness([1, 1], [1])
 
 print rn.eval([0, 0])
 print rn.eval([0, 1])
