@@ -21,6 +21,53 @@
 
 * Se concluyó la [Sesión 1](https://github.com/badillosoft/python-master/tree/master/sesion_1) dónde se revisaron los componentes básicos de python.
 * Se añadió el libro [Python para todos](https://github.com/badillosoft/python-master/blob/master/recursos/python_para_todos.pdf) en la sescción de recursos.
+* Se concluyó la [Sesión 2](https://github.com/badillosoft/python-master/tree/master/sesion_2) dónde se revisaron las listas, tuplas, arreglos, vectores y matrices.
+
+## Tareas
+
+1. Crear un programa que defina la función llamada `stats(arr)` la cual recibe el arreglo (o tupla) `arr` y devuelve una tupla `(min, max, sum, prom, sum2, desv)` con el valor mínimo, máximo, la suma de los valores, el promedio de estos, la suma de cuadrados y la desviación estándar `desv² = ∑(xi - ẋ)` donde `ẋ` es el promedio. Puede basarse en el programa [min_max.py](https://github.com/badillosoft/python-master/blob/master/sesion_2/min_max.py) de la sesión 2
+2. Crear un programa que solicite el número de puntos a ingresar, luego para cada punto guardar en un arreglo la tupla `(x, y)` donde `x` es el i-ésimo punto en su coordenada `x` y `y` en su coordenada `y` (también deben ingresarse), intente utilizar `line = raw_input("Ingresa X y Y separados por ',', ejemplo '1, 2': ")` luego `aux = line.split(",")`, finalmente `x = float(aux[0])` y `y = aux[1]`, sino solicite cada valor por separado `x = float(raw_input("ingresa X: "))`. Cada punto se guardará en el arreglo llamado `points` inicialmente vacío `points = []`. Una vez que tenga los puntos complete el siguiente programa:
+
+> __python__ - fast_interpol.py
+
+~~~py
+points = []
+
+# COMPLETAR LECTURA DE points
+# N = int(raw_input("Ingresa el numero de puntos: "))
+# for i in range(0, N):
+#   # ... LEER x, y
+#   points.append((x, y))
+
+def lin(x0, y0, x1, y1, x):
+    return y0 + float(y1 - y0) / (x1 - x0) * (x - x0)
+
+def interpol(P, x):
+    n = len(P)
+    for k in range(0, n - 1):
+        x0, y0 = P[k]
+        x1, y1 = P[k + 1]
+        if x < x1:
+            return lin(x0, y0, x1, y1, x)
+    return lin(x0, y0, x1, y1, x)
+
+def x_bounds(points):
+  x_min = points[0][0]
+  x_max = points[0][0]
+  for x, y in points:
+    if x_min > x:
+      x_min = x
+    elif x_max < x:
+      x_max = x
+  return (int(x_min) - 1, int(x_max) + 1)
+  
+x_min, x_max = x_bounds(points)
+
+print "# Points: %i | Range (%i, %i)" %(len(points), x_min, x_max)
+
+for x in range(x_min, x_max):
+    print "%.2f %.2f" %(x, interpol(points, x))
+~~~
 
 ## Sesión 1
 
@@ -114,5 +161,12 @@ for x in range(1, 101):
 print "La suma los primeros 100 numeros naturales (1, 2, 3, ...., 100) es", s
 ~~~
 
+## Sesión 2
+
+* __Listas__: las listas son conjuntos de datos que pueden ser accedidos por un solo nombre de variable y nos permiten guardar arreglos de datos. Las listas se dividen en _Tuplas_ y _Arreglos_.
+* __Tuplas__: las tuplas son arreglos fijos de datos, similar a los arreglos con la diferencia que son de dimensión fija, es decir, no podemos agregar o eliminar elementos, sin embargo, si podemos modificar sus valores mediante su índice. Para declarar una tupla usaremos los paréntesis `()` y dentro de ellos los valores, ejemplo `a = (1, 2, "Hola mundo")`. Para recuperar o modificar un valor lo haremos mediante su índice comenzando en 0, ejemplo `a[0] = 3 # a := (3, 2, "Hola mundo")`. Las tuplas son de gran utilidad para devolver datos agrupados como retorno de una función, ejemplo `def ans_next(n): return (n - 1, n + 1)` o `def swap(a, b): return (b, a)`. Las tuplas poseen una sintaxis de _empaquetado/desempaquetado_ el cual es útil para asignarle variables a una tupla, ejemplo `(x, y) = (1, 2)` de esta forma se asignará `x = 1` y `y = 2`, esto se puede utilizar para desempaquetar los datos provenientes de una tupla devuelta por una función, ejemplo `(i, j) = ans_next(10)`, así `i = 9` y `j = 11`. Las tuplas son iterables por lo que podemos iterar sus valores mediante `for-in`, ejemplo `for x in (1, 2, 3): ...`.
+* __Arreglos__: los arreglos son valores ordenados guardados en una variable similar a la tupla, con la diferencia que podemos seguir añadiendo o quitando valores y además podemos realizar algunas operaciones entre ellas. Para declarar un arreglo literal lo podemos hacer mediante los corchetes `[]`, ejemplo `a = [1, 2, "Hola mundo"]`, el método `append` nos permite añadir un elemento al final del arreglo, ejemplo `a.append(4) # a := [1, 2, "Hola mundo", 4]`. El método `pop` nos permite eliminar el último elemento del arreglo y lo devuelve, ejemplo `b = a.pop() # b := 4, a := [1, 2, "Hola mundo"]`, también podemos eliminar el índice deseado mediante `pop(i)`, ejemplo `b = a.pop(1) # b := 2, a := [1, "Hola mundo"]`, `a.pop(-1) # a := [1]`. Otros métodos que se pueden aplicar a los arreglos los puede consultar en https://docs.python.org/2/library/array.html. Finalmente podemos sumar `a = [1, 2] + [3 + 4] # a := [1, 2, 3, 4]` y multiplicar (replicar) `a = [1, 2, 3] * 2 # a := [1, 2, 3, 1, 2, 3]`. La dimensión (longitud) de un arreglo se obtiene usando `len`, ejemplo `l = len(a) # l := 6`.
+* __Matrices__: python no soporta matrices nativas ni sus operaciones, pero podemos considerar una matriz como un arreglo de arreglos, ejemplo `A = [[1, 2, 3], [4, 5, 6]]` representaría una matriz de 2 filas (2 vectores) y cada fila de 3 columnas. Para acceder a la posición específica hacemos `A[i][j]`, observando que `A[i]` devuelve el i-ésimo arreglo de la matriz, es decir toda la fila i (el arreglo/vector asociado a la fila i), ejemplo `vec = A[1] # vec := [4, 5, 6]`, `a12 = A[1][2] # a12 := 5 (vec[2])`.
+* __Módulos__: los módulos pueden considerarse como _bibliotecas_ de variables y funciones que pueden ser reutilizados en otro programa para no reescribir esa funcionalidad, en python todos los archivos `.py` pueden ser utilizados como módulos. Existen varias formas de incluir un módulo en nuestro programa: `import archivo` importa el archivo `archivo.py` (ubicado en el mismo directorio o en las librerías estándares) y toda variable y función puede ser utilizada mediante el nombre del módulo `.` (periodo) y el nombre de la variable o función, ejemplo `import archivo; print archivo.a, archivo.foo("Hola")` suponiendo que existe `archivo.py` que define a la variable `a` y al método `foo(s)`. También podemos importar un módulo y asignarle un _alias_ lo cual permite trabar el módulo de forma más compacta, ejemplo `import archivo as ar; print ar.a, ar.foo(":O")`, observe que ahora nos referimos al módulo mediante su alias `archivo` pasa a ser `ar`. La tercera forma es incluir sólo algunos elementos del módulo en nuestro programa, esto nos permite utilizar las variables y métodos como si los hubieramos definido en nuestro programa, ejemplo `from archivo import a, foo; print a, foo(";)")`, observe que utilizamos la variable `a` y al método `foo` como sin usar el nombre del módulo, como si estuvieran declarados ahí mismo. La última forma es incluir todas las definiciones, la diferencia con antes es que podemos utilizar todos los mátodos y variables como si estuvieran declarados en nuestro archivo, pero debemos tener cuidado al asignar nombres de variables o métodos ya que invalidaremos los ya cargados, ejemplo `from math import *; print cos(3.1416)`. Al importar un módulo python evaluará el módulo, por lo que instrucciones como `print` y demás serán ejecutadas igualmente, para evitar esto podemos colocar todo lo que no queramos que ejecute en un `if __name__ == "__main__": ...` esto hará que python sólo ejecute lo que está en el `if` cuando se manda a ejecutar mediante `python archiv.py`, pero que no lo ejecute cuando se importa `import archivo` o su variante de importación.
 
 
