@@ -18,7 +18,22 @@ class Node:
         return 1.0 / (1.0 + exp(-s))
 
 class Layer:
-    
+    def __init__(self, Ni, No):
+        self.nodes = []
+
+        for i in range(0, No):
+            self.nodes.append(Node(Ni))
+
+        self.Ni = Ni
+        self.No = No
+
+    def eval(self, x):
+        y = []
+
+        for node in self.nodes:
+            y.append(node.eval(x))
+
+        return y
 
 class RN:
     def __init__(self, M, N, K):
