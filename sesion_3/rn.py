@@ -36,18 +36,21 @@ class Layer:
         return y
 
 class RN:
-    def __init__(self, M, N, K):
-        self.layers = []
+    def __init__(self, M, N, K, G):
+        self.layers = [Layer(K, N)]
 
-        for i in range(0, M + 1):
-            if i == 0:
-                nodes = []
+        for i in range(0, M):
+            self.layers(Layer(N, N))
 
-                for j in range(0, K):
-                    nodes.append(0)
+        self.layers(Layer(N, G))
 
-                self.layers.append(nodes)
+    def eval(self, x):
+        y = self.layers[0].eval(x)
 
-                continue
+        for i in range(1, M + 1):
+            y = self.layers[1].eval(y)
 
-            
+        z = self.layers[M + 1].eval(y)
+
+        return z
+
