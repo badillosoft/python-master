@@ -22,7 +22,7 @@ r = Robot(10, 2, 0)
 plot.ion()
 
 while True:
-    plot.clf()
+    #plot.clf()
     plot.axis([-100, 100, -100, 100])
     plot.autoscale(False)
     r.mover(1)
