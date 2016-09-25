@@ -1,5 +1,7 @@
 # Curso de Python
 
+__IMPORTANTE:__ Ya subí 5 tareas que son para la última sesión, si no las hacen tendrán que hacer examen con problemas similares a los de la tarea más preguntas teóricas.
+
 ## Contenido
 
 * Tipos de Datos y Variables
